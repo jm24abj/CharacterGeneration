@@ -1,5 +1,5 @@
-from generationUtils import attributeGenerator
-from generationUtils import characterSheetGenerator
+import attributeGenerator
+import characterSheetGenerator
 
 '''  ============================ INFO ============================
 
