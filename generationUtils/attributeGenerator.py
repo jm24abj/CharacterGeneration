@@ -9,7 +9,7 @@ def generateName():
         "Violet", "William", "Xavier", "Yara", "Zoe"
     ]
     
-    return NAME_LIST[random.randint(0,len(NAME_LIST - 1))]
+    return NAME_LIST[random.randint(0,len(NAME_LIST)-1)]
     
 
 def selectSkill():

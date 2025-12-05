@@ -1,6 +1,3 @@
 [character]
 MAX_TRAIT_COUNT = 3
 MAX_ATTRIBUTE_POINTS = 11
-[runner]
-DEVELOPER_MODE = false
-

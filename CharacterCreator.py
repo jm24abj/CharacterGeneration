@@ -1,5 +1,5 @@
 from generationUtils import attributeGenerator
-from generationUtils import skillsGenerator
+from generationUtils import characterSheetGenerator
 
 '''  ============================ INFO ============================
 
@@ -13,19 +13,24 @@ class CharacterCreator:
     
 
     def __init__(self):
-        self.name,self.skills,self.traits = self.randomise(False,False)
+        self.name, self.skills , self.traits = None , None , None
+        self.randomise(False,False) # generates default values
     
-    def randomise(KEEP_NAME: bool, KEEP_SKILLS_AND_TRAITS: bool):
+    def randomise(self,KEEP_NAME: bool, KEEP_SKILLS_AND_TRAITS: bool):
 
-        if KEEP_NAME and KEEP_SKILLS_AND_TRAITS:
-            return
-        elif not KEEP_NAME and KEEP_SKILLS_AND_TRAITS:
-            newName = attributeGenerator.generateName()
-            print(newName)
-        if not KEEP_SKILLS_AND_TRAITS and KEEP_NAME:
-            pass
-        else:
-            pass
+        if not KEEP_NAME:
+            self.name = attributeGenerator.generateName()
+        
+        if not KEEP_SKILLS_AND_TRAITS:
+            self.skills,self.traits = characterSheetGenerator.generateSkillsAndTraits()
+    
+    def __str__(self):
+        return f"\n====================\nName: {self.name}\nSkills: {self.skills}\nTraits: {self.traits}\n===================="
 
 if __name__ == "__main__":
-    print(attributeGenerator.selectSkill())
+    TEST_ITERATION_NUM = 5
+    characterCreationInstance = CharacterCreator()
+
+    for i in range(TEST_ITERATION_NUM):
+        characterCreationInstance.randomise(False,False)
+        print(characterCreationInstance)
