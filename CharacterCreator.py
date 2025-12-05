@@ -1,5 +1,5 @@
-import genUtils.attributeGenerator as attributeGenerator
-import genUtils.skillsGenerator as skillsGenerator
+from generationUtils import attributeGenerator
+from generationUtils import skillsGenerator
 
 '''  ============================ INFO ============================
 
@@ -9,25 +9,23 @@ that is only needed at beggining of character creation.
 
      ============================ INFO ============================  '''
 
-MAX_START_TRAITS = 3
-MAX_SKILL_POINTS = 10
-NAME_LIST = [
-    "Alice", "Benjamin", "Chloe", "Daniel", "Emma",
-    "Finn", "Grace", "Henry", "Isla", "Jack",
-    "Lily", "Mason", "Nora", "Oliver", "Poppy",
-    "Quinn", "Ruby", "Samuel", "Tara", "Uma",
-    "Violet", "William", "Xavier", "Yara", "Zoe"
-]
-
 class CharacterCreator:
     
 
     def __init__(self):
-        pass
+        self.name,self.skills,self.traits = self.randomise(False,False)
     
     def randomise(KEEP_NAME: bool, KEEP_SKILLS_AND_TRAITS: bool):
 
-        if not KEEP_NAME:
+        if KEEP_NAME and KEEP_SKILLS_AND_TRAITS:
+            return
+        elif not KEEP_NAME and KEEP_SKILLS_AND_TRAITS:
+            newName = attributeGenerator.generateName()
+            print(newName)
+        if not KEEP_SKILLS_AND_TRAITS and KEEP_NAME:
             pass
-        if not KEEP_SKILLS_AND_TRAITS:
+        else:
             pass
+
+if __name__ == "__main__":
+    print(attributeGenerator.selectSkill())
