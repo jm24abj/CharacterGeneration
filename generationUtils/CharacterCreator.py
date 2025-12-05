@@ -24,8 +24,14 @@ class CharacterCreator:
         if not KEEP_SKILLS_AND_TRAITS:
             self.skills,self.traits = characterSheetGenerator.generateSkillsAndTraits()
     
+    def setCustomName(self,name : str):
+        self.name = name
+
+    def finishCustomisation(self) -> tuple :
+        return self.name,self.skills,self.traits
+
     def __str__(self):
-        return f"\n====================\nName: {self.name}\nSkills: {self.skills}\nTraits: {self.traits}\n===================="
+        return f"\n====================\nName: {self.name}\n--------------------\nSkills: {self.skills}\n--------------------\nTraits: {self.traits}\n===================="
 
 if __name__ == "__main__":
     TEST_ITERATION_NUM = 5
