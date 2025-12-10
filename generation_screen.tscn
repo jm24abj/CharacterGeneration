@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://bmiyuh2isuanp"]
+[gd_scene load_steps=3 format=3 uid="uid://bmiyuh2isuanp"]
+
+[ext_resource type="PackedScene" uid="uid://c5ig7qt3r5bpk" path="res://character_panel.tscn" id="1_1dqc6"]
+[ext_resource type="StyleBox" uid="uid://cpfi0hjrle143" path="res://UIThemes/charSelectPanel.tres" id="1_mxy71"]
 
 [node name="GenerationScreen" type="Control"]
 layout_mode = 3
@@ -20,7 +23,7 @@ alignment = 1
 [node name="CharacterContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 4.0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -31,17 +34,14 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="CharacterPanel1" type="Panel" parent="VBoxContainer/CharacterContainer/CharacterPanels"]
+[node name="CharacterPanel" parent="VBoxContainer/CharacterContainer/CharacterPanels" instance=ExtResource("1_1dqc6")]
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="CharacterPanel2" type="Panel" parent="VBoxContainer/CharacterContainer/CharacterPanels"]
+[node name="CharacterPanel2" parent="VBoxContainer/CharacterContainer/CharacterPanels" instance=ExtResource("1_1dqc6")]
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="CharacterPanel3" type="Panel" parent="VBoxContainer/CharacterContainer/CharacterPanels"]
+[node name="CharacterPanel3" parent="VBoxContainer/CharacterContainer/CharacterPanels" instance=ExtResource("1_1dqc6")]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="ContinueContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -52,3 +52,4 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Panel" type="Panel" parent="VBoxContainer/ContinueContainer"]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("1_mxy71")
