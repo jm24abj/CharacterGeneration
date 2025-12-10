@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5ig7qt3r5bpk"]
+[gd_scene load_steps=5 format=3 uid="uid://c5ig7qt3r5bpk"]
 
 [ext_resource type="StyleBox" uid="uid://cpfi0hjrle143" path="res://UIThemes/charSelectPanel.tres" id="1_xeji2"]
-[ext_resource type="Texture2D" uid="uid://t7we5t6a4pnb" path="res://icon.svg" id="2_203vo"]
+[ext_resource type="Script" path="res://Src/GenerationScripts/character_panel.gd" id="2_0mgls"]
+[ext_resource type="Texture2D" uid="uid://t7we5t6a4pnb" path="res://GUI/icon.svg" id="2_203vo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wa1qb"]
 bg_color = Color(0.403222, 0.187021, 0.286066, 1)
@@ -15,6 +16,7 @@ border_blend = true
 [node name="CharacterPanel" type="Panel"]
 size_flags_horizontal = 3
 theme_override_styles/panel = ExtResource("1_xeji2")
+script = ExtResource("2_0mgls")
 
 [node name="CharacterLayout" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -42,12 +44,27 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="CharacterLayout/TitleHolder/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CharacterLayout/TitleHolder/MarginContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="CharacterLayout/TitleHolder/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 1
 text = "Character Name
 "
 vertical_alignment = 1
+
+[node name="EditName" type="Button" parent="CharacterLayout/TitleHolder/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Edit
+"
+
+[node name="ReRoll" type="Button" parent="CharacterLayout/TitleHolder/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Re-roll"
 
 [node name="Stats" type="MarginContainer" parent="CharacterLayout"]
 layout_mode = 2
@@ -68,7 +85,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="TextureRect" type="TextureRect" parent="CharacterLayout/Stats/CharacterLayout2/AttributesHolder"]
+[node name="CharacterImage" type="TextureRect" parent="CharacterLayout/Stats/CharacterLayout2/AttributesHolder"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -229,3 +246,6 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "Stress Response: Binge Eater
 Overjoyed Response: Balloon Artist
 "
+
+[connection signal="button_down" from="CharacterLayout/TitleHolder/MarginContainer/HBoxContainer/EditName" to="." method="_on_edit_name_button_down"]
+[connection signal="button_down" from="CharacterLayout/TitleHolder/MarginContainer/HBoxContainer/ReRoll" to="." method="_on_re_roll_button_down"]

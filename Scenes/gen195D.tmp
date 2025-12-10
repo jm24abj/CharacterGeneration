@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmiyuh2isuanp"]
 
-[ext_resource type="PackedScene" uid="uid://c5ig7qt3r5bpk" path="res://character_panel.tscn" id="1_1dqc6"]
-[ext_resource type="StyleBox" uid="uid://cpfi0hjrle143" path="res://UIThemes/charSelectPanel.tres" id="1_mxy71"]
+[ext_resource type="PackedScene" uid="uid://c5ig7qt3r5bpk" path="res://Scenes/character_panel.tscn" id="1_prs5y"]
+[ext_resource type="StyleBox" uid="uid://cpfi0hjrle143" path="res://UIThemes/charSelectPanel.tres" id="2_2yu83"]
 
 [node name="GenerationScreen" type="Control"]
 layout_mode = 3
@@ -34,13 +34,13 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="CharacterPanel" parent="VBoxContainer/CharacterContainer/CharacterPanels" instance=ExtResource("1_1dqc6")]
+[node name="CharacterPanel2" parent="VBoxContainer/CharacterContainer/CharacterPanels" instance=ExtResource("1_prs5y")]
 layout_mode = 2
 
-[node name="CharacterPanel2" parent="VBoxContainer/CharacterContainer/CharacterPanels" instance=ExtResource("1_1dqc6")]
+[node name="CharacterPanel4" parent="VBoxContainer/CharacterContainer/CharacterPanels" instance=ExtResource("1_prs5y")]
 layout_mode = 2
 
-[node name="CharacterPanel3" parent="VBoxContainer/CharacterContainer/CharacterPanels" instance=ExtResource("1_1dqc6")]
+[node name="CharacterPanel3" parent="VBoxContainer/CharacterContainer/CharacterPanels" instance=ExtResource("1_prs5y")]
 layout_mode = 2
 
 [node name="ContinueContainer" type="MarginContainer" parent="VBoxContainer"]
@@ -52,4 +52,4 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Panel" type="Panel" parent="VBoxContainer/ContinueContainer"]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("1_mxy71")
+theme_override_styles/panel = ExtResource("2_2yu83")
