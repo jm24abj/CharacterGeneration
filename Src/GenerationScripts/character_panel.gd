@@ -69,6 +69,7 @@ func rollName():
 func rollAttributes():
 	const MAX_ATTRIBUTES : int = 7
 	const MAX_POINTS_COUNT : int = 11
+	var currentAttributePool : Array[String] = ALL_ATTRIBUTES.duplicate()
 	var assignedPoints : int = 0
 	
 	goodAttributesLabel.clear()
@@ -81,7 +82,7 @@ func rollAttributes():
 	
 	while (assignedPoints < MAX_POINTS_COUNT) and (attributesAdded < MAX_ATTRIBUTES):
 		var isDebuff : bool = randi_range(1,4 + (numOfDebuffs * 2)) == 1
-		var attribute : String = ALL_ATTRIBUTES[randi_range(0,ALL_ATTRIBUTES.size()-1)]
+		var attribute : String = currentAttributePool.pop_at(randi_range(0,currentAttributePool.size()-1))
 		var value : int = randi_range(1,MAX_POINTS_COUNT-assignedPoints)
 		
 		if isDebuff:
@@ -97,6 +98,8 @@ func rollAttributes():
 func rollTraits():
 	const MAX_TRAIT_COUNT : int = 4
 	var traitCount : int = randi_range(1,MAX_TRAIT_COUNT)
+	var goodTraitPool : Array[String] = ALL_GOOD_TRAITS.duplicate()
+	var badTraitPool : Array[String] = ALL_BAD_TRAITS.duplicate()
 	
 	goodTraitsLabel.clear()
 	badTraitsLabel.clear()
@@ -113,11 +116,11 @@ func rollTraits():
 		goodTrait = randi_range(0,1)
 		if goodTrait == 1:
 			hasGoodTraits = true
-			goodTraitsLabel.add_text(". " + ALL_GOOD_TRAITS[randi_range(0,ALL_GOOD_TRAITS.size()-1)])
+			goodTraitsLabel.add_text(". " + goodTraitPool.pop_at(randi_range(0,goodTraitPool.size()-1)))
 			goodTraitsLabel.add_text("\n")
 		else:
 			hasBadTraits = true
-			badTraitsLabel.add_text(". " + ALL_BAD_TRAITS[randi_range(0,ALL_BAD_TRAITS.size()-1)])
+			badTraitsLabel.add_text(". " + badTraitPool.pop_at(randi_range(0,badTraitPool.size()-1)))
 			badTraitsLabel.add_text("\n")
 	
 	if not hasBadTraits:
